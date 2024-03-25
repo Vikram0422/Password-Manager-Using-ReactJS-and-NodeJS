@@ -48,7 +48,7 @@ const Manager = () => {
 
     const saveform = async () => {
         if (form.site.length > 3 && form.username.length > 3 && form.password.length > 3) {
-            
+
             await fetch("http://localhost:3000/delete", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: form.id }) })
 
             setpasswordArray([...passwordArray, { ...form, id: uuidv4() }])
@@ -74,7 +74,7 @@ const Manager = () => {
     }
 
     const editform = (id) => {
-        setform({...passwordArray.filter(item => item.id === id)[0], id: id})
+        setform({ ...passwordArray.filter(item => item.id === id)[0], id: id })
         setpasswordArray(passwordArray.filter(item => item.id !== id))
     }
 
@@ -170,18 +170,18 @@ const Manager = () => {
                         <tbody className='bg-green-100'>
                             {passwordArray.map((item, index) => {
                                 return <tr key={index}>
-                                    <td className='text-center border border-white py-2 '>
+                                    <td className='flex text-center justify-center border border-white py-2 '>
                                         <a href={item.site} target='_blank' className="flex items-center justify-center">
                                             <span>{item.site}</span>
-                                            <div className='lordiconcopy size-7 cursor-pointer' onClick={() => { copyText(item.site) }}>
-                                                <lord-icon
-                                                    src="https://cdn.lordicon.com/wzwygmng.json"
-                                                    style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
-                                                    trigger="hover"
-                                                    stroke="bold">
-                                                </lord-icon>
-                                            </div>
                                         </a>
+                                        <div className='lordiconcopy size-7 cursor-pointer' onClick={() => { copyText(item.site) }}>
+                                            <lord-icon
+                                                src="https://cdn.lordicon.com/wzwygmng.json"
+                                                style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
+                                                trigger="hover"
+                                                stroke="bold">
+                                            </lord-icon>
+                                        </div>
                                     </td>
                                     <td className='text-center border border-white py-2 '>
                                         <div className='flex items-center justify-center '>
